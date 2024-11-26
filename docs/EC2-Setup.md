@@ -73,13 +73,13 @@ ssh -i caminho-para-sua-chave.pem ubuntu@<Elastic-IP>
 1. Utilize o cliente Bitvise:
     - Configure uma conexão no Bitvise com o IP da instância, a porta 22 e o usuário "ubuntu"
     ![EC2-Setup-14](/docs/img/EC2-Setup/EC2-Setup-14.png)
-2. Será necessário definir o método de autenticação, no nosso caso precisaremos configurar uma "***Global Key***", para isso vamos em "**Client key Manager**"
-![EC2-Setup-15](/docs/img/EC2-Setup/EC2-Setup-15.png)
-3. Clique em "**import**" e selecione o seu arquivo "**.pem**" que foi salvo no momento em que você criou o Key Pair ao criar a sua EC2
+2. Será necessário definir o método de autenticação, no nosso caso precisaremos configurar uma "***Global Key***", para isso vamos em "**Client key Manager**"<br>
+   ![EC2-Setup-15](/docs/img/EC2-Setup/EC2-Setup-15.png)
+4. Clique em "**import**" e selecione o seu arquivo "**.pem**" que foi salvo no momento em que você criou o Key Pair ao criar a sua EC2
 ![EC2-Setup-16](/docs/img/EC2-Setup/EC2-Setup-16.png)
-4. Agora você precisa selecionar o "**Client Key**" para utilizar a chave Global que você importou
+5. Agora você precisa selecionar o "**Client Key**" para utilizar a chave Global que você importou
 ![EC2-Setup-17](/docs/img/EC2-Setup/EC2-Setup-17.png)
-5. Clique em "**Log in**" e verifique se apareceu uma nova aba na sidebar chamada "**New terminal console**", caso tenha aparecido, basta clicar nela para abrir o terminal da sua máquina EC2.
+6. Clique em "**Log in**" e verifique se apareceu uma nova aba na sidebar chamada "**New terminal console**", caso tenha aparecido, basta clicar nela para abrir o terminal da sua máquina EC2.<br>
 ![EC2-Setup-18](/docs/img/EC2-Setup/EC2-Setup-18.png)
 
 ---

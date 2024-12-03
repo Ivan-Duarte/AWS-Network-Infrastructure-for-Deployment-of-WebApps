@@ -71,20 +71,69 @@ ssh -i caminho-para-sua-chave.pem ubuntu@<Elastic-IP>
 #### **Para usuários do Windows:**
 
 1. Utilize o cliente Bitvise:
-    - Configure uma conexão no Bitvise com o IP da instância, a porta 22 e o usuário "ubuntu"
+    - Configure uma conexão no Bitvise com o IP da instância, a porta 22 e o usuário "ubuntu"<br>
     ![EC2-Setup-14](/docs/img/EC2-Setup/EC2-Setup-14.png)
-2. Será necessário definir o método de autenticação, no nosso caso precisaremos configurar uma "***Global Key***", para isso vamos em "**Client key Manager**"
+2. Será necessário definir o método de autenticação, no nosso caso precisaremos configurar uma "***Global Key***", para isso vamos em "**Client key Manager**"<br>
 ![EC2-Setup-15](/docs/img/EC2-Setup/EC2-Setup-15.png)
-3. Clique em "**import**" e selecione o seu arquivo "**.pem**" que foi salvo no momento em que você criou o Key Pair ao criar a sua EC2
+3. Clique em "**import**" e selecione o seu arquivo "**.pem**" que foi salvo no momento em que você criou o Key Pair ao criar a sua EC2<br>
 ![EC2-Setup-16](/docs/img/EC2-Setup/EC2-Setup-16.png)
-4. Agora você precisa selecionar o "**Client Key**" para utilizar a chave Global que você importou
+4. Agora você precisa selecionar o "**Client Key**" para utilizar a chave Global que você importou<br>
 ![EC2-Setup-17](/docs/img/EC2-Setup/EC2-Setup-17.png)
-5. Clique em "**Log in**" e verifique se apareceu uma nova aba na sidebar chamada "**New terminal console**", caso tenha aparecido, basta clicar nela para abrir o terminal da sua máquina EC2.
+5. Clique em "**Log in**" e verifique se apareceu uma nova aba na sidebar chamada "**New terminal console**", caso tenha aparecido, basta clicar nela para abrir o terminal da sua máquina EC2.<br>
 ![EC2-Setup-18](/docs/img/EC2-Setup/EC2-Setup-18.png)
 
 ---
 
 ### 3. Configurar Grupos de Seguranças
+>Os Grupos de Segurança são essenciais para controlar o tráfego que entra e sai de sua instância EC2. Eles funcionam como firewalls virtuais.
+
+**Passos para Configurar Grupos de Segurança:**
+
+1. Acesse a Seção de Grupos de Segurança:
+    - No painel da AWS, acesse a seção **Security Groups** (Grupos de Segurança) no menu lateral da página EC2.<br>
+    ![EC2-Setup-](/docs/img/EC2-Setup/EC2-Setup-20.png)
+2. Crie ou Edite um Grupo de Segurança:
+    - Clique em Create Security Group para criar um novo grupo ou selecione um grupo existente para editar.
+    ![EC2-Setup-](/docs/img/EC2-Setup/EC2-Setup-21.png)
+3. Configurações Básicas do Grupo de Segurança:
+    - Nome do grupo: Frontend (ou outro nome que descreva sua função).
+    - Descrição: Grupo de segurança para a instância Frontend.
+    ![EC2-Setup-](/docs/img/EC2-Setup/EC2-Setup-22.png)
+4. Adicione Regras de Entrada:
+    - Clique em Add Rule e configure as portas abaixo:
+        - SSH (porta 22): Permite acesso remoto via terminal.
+            - Tipo: SSH
+            - Protocolo: TCP
+            - Porta: 22
+            - Origem: Seu IP (recomendado) ou Anywhere para acesso aberto.
+        - HTTP (porta 80): Permite tráfego da web não seguro.
+            - Tipo: HTTP
+            - Protocolo: TCP
+            - Porta: 80
+            - Origem: Anywhere.
+        - HTTPS (porta 443): Permite tráfego da web seguro.
+            - Tipo: HTTPS
+            - Protocolo: TCP
+            - Porta: 443
+            - Origem: Anywhere.
+        - VPN (porta 1194): Permite conexões do OpenVPN.
+            - Tipo: Custom UDP Rule
+            - Protocolo: UDP
+            - Porta: 1194
+            - Origem: Anywhere (ou Seu IP, caso queira limitar acessos).
+<br>
+
+        ![EC2-Setup-](/docs/img/EC2-Setup/EC2-Setup-23.png)
+
+> Por padrão, todas as regras de saída são permitidas. Não é necessário configurar manualmente, a menos que queira restringir tráfego específico.
+5. Associar o Grupo de Segurança à Instância EC2:
+    - Acesse a página da instância EC2 criada.
+    - Clique em Actions > Security > Change Security Groups.<br>
+    ![EC2-Setup-](/docs/img/EC2-Setup/EC2-Setup-24.png)
+    - Adicione o grupo de segurança configurado (e remova outros, se necessário).
+    ![EC2-Setup-](/docs/img/EC2-Setup/EC2-Setup-25.png)
+
+>Salve as alterações e Confirme que o grupo de segurança está aplicado corretamente e teste as conexões para garantir que as portas configuradas estejam funcionando como esperado.
 
 ---
 

@@ -1,7 +1,7 @@
 ## Guia de Configuração do EC2
-> Este guia fornece um passo a passo detalhado para configurar instâncias EC2 na AWS e preparar o ambiente para a implantação de aplicações web.
+> **Este guia fornece um passo a passo detalhado para configurar instâncias EC2 na AWS e preparar o ambiente para a implantação de aplicações web.**
 
-## ❗❗❗ Pré-requisitos
+## ❗ Pré-requisitos
 1. Conta <a href="https://aws.amazon.com/pt/free/?gclid=CjwKCAiA3ZC6BhBaEiwAeqfvyrw2rtc1HfyzoWWtt6mO1fQiXwAkCV2UEng6-62EzV1e2EXr3u5uvxoCS-sQAvD_BwE&trk=2ee11bb2-bc40-4546-9852-2c4ad8e8f646&sc_channel=ps&ef_id=CjwKCAiA3ZC6BhBaEiwAeqfvyrw2rtc1HfyzoWWtt6mO1fQiXwAkCV2UEng6-62EzV1e2EXr3u5uvxoCS-sQAvD_BwE:G:s&s_kwcid=AL!4422!3!696214219374!e!!g!!aws!15278604629!130587771740&all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all" target="_blank">**AWS**</a> com permissões específicas (IAM).
 2. AWS CLI configurada localmente (opcional para automação).
 3. Cliente SSH instalado em sua máquina (como <a href="https://bitvise.com/download-area" target="_blank">**Bitvise SSH**</a> ou <a href="https://www.putty.org/" target="_blank">**PuTTY**</a>).
@@ -84,7 +84,11 @@ ssh -i caminho-para-sua-chave.pem ubuntu@<Elastic-IP>
 
 ---
 
-### 3. Instalar Pacotes Básicos
+### 3. Configurar Grupos de Seguranças
+
+---
+
+### 4. Instalar Pacotes Básicos
 Depois de conectar-se à instância, atualize o diretório de pacotes com o comando abaixo:
 
 ```bash
@@ -104,5 +108,5 @@ sudo apt update && sudo apt upgrade -y
     - **Backend**: Hospedagem do servidor backend e banco de dados.
 2. Consulte o <a href="./img/Network-Topology.png">**Diagrama de Topoligia de Rede**</a>.
 3. Configure: 
-    - VPN: Siga o guia <a href="/examples/vpn/VPN-Setup.md">**VPN-Setup.md**</a>
-    - Nginx como proxy reverso: Veja <a href="/examples/nginx/Nginx-Configuration.md">**Nginx-Configuration.md**</a>
+    - VPN: Siga o guia <a href="/docs/VPN-Setup.md">**VPN-Setup.md**</a>
+    - Nginx como proxy reverso: Veja <a href="/docs/Nginx-Configuration.md">**Nginx-Configuration.md**</a>
